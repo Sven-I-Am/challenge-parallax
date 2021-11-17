@@ -39,6 +39,9 @@ This week after we all got done with the database exercises we were given the fr
       * the hours before lunch were spent getting the basic requirements in
       * at lunch-time I had the layer movement and basic character movement down
       * after lunch and the tech-talk I did my first commit and push of the project
+      * I managed to spawn obstacles when clicking, have to change that to a randomized interval perhaps?
+      * currently working on despawning the obstacles once they move out of the screen
+        * for now it despawns all obstacles when the first obstacle gets beyond the screen border
 
 ## To Do
 
