@@ -1,0 +1,90 @@
+/*-------*/
+/*OVERALL*/
+/*-------*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.layer {
+    position: absolute;
+    overflow: hidden;
+}
+
+#background {
+    background-image: url("../ASSETS/GAME/level-builder/Frump_BG.png");
+    background-attachment: fixed;
+    background-position-x: 0px;
+    top: 0;
+    height: 100VH;
+    width: 100%;
+    z-index: 0;
+}
+
+#cloud1 {
+    background-image: url("../ASSETS/GAME/clouds/Cloud_1.png");
+    background-position: top left;
+    background-position-x: 0px;
+    height: 50%;
+    width: 100%;
+    background-repeat: repeat-x;
+    background-size: contain;
+    z-index: 1;
+}
+
+#cloud2 {
+    background-image: url("../ASSETS/GAME/clouds/Cloud_2.png");
+    background-position: top left;
+    background-position-x: 0px;
+    height: 50%;
+    width: 100%;
+    background-repeat: repeat-x;
+    background-size: contain;
+    z-index: 2;
+}
+
+#cloud3 {
+    background-image: url("../ASSETS/GAME/clouds/Cloud_3.png");
+    background-position: top left;
+    background-position-x: 0px;
+    background-position-y: -20px;
+    height: 50%;
+    width: 100%;
+    background-repeat: repeat-x;
+    background-size: contain;
+    z-index: 3;
+}
+
+#ground {
+    background-image: url("../ASSETS/GAME/level-builder/platform_mid.png");
+    background-position: bottom left;
+    background-position-x: 0;
+    bottom: 0;
+    height: 100px;
+    width: 100%;
+    background-repeat: repeat-x;
+    background-size: contain;
+    z-index: 5;
+}
+
+#footLevel {
+    height: 80px;
+}
+
+#player {
+    background-image: url("../ASSETS/GAME/frump/frump-front.png");
+    top: 50%;
+    left: 250px;
+    height: 100px;
+    width: 100px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 10;
+}
