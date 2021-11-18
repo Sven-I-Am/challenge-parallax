@@ -16,6 +16,7 @@ let cloud2 = document.getElementById('cloud2');
 let cloud2X = cloud1.offsetLeft;
 let cloud3 = document.getElementById('cloud3');
 let cloud3X = cloud1.offsetLeft;
+let hearts = document.getElementsByClassName('heart');
 let obstacleLayer = document.getElementById('obstacles');
 //let obstacles = obstacleLayer.getElementsByClassName('obstacle');
 let speedX = 1;
@@ -25,22 +26,24 @@ let playerIMG = document.getElementById('playerIMG');
 
 let player = {
     height: playerDiv.offsetHeight,
-    y: playerDiv.offsetTop,
+    y: window.innerHeight/2,
     minY: ceiling.offsetHeight,
     maxY: window.innerHeight - playerDiv.offsetHeight - floor.offsetHeight,
     speedY: 0,
-    speedX: 0,
     drag: 0.99,
     gravity: 0.1,
+    lives: 3,
     alive: true
 }
+
+playerDiv.style.top = player.y + "px";
 
   let climbing;
   let falling;
   let climbBool = false;
 
 function keyDown(e) {
-    if (e.keyCode === 32 && !climbBool && player.alive) {
+    if (e.keyCode === 32 && !climbBool && player.alive && playing) {
         climbBool = true;
         player.speedY = 5;
         clearInterval(falling);
@@ -48,7 +51,7 @@ function keyDown(e) {
     }
 }
 function keyUp(e){
-    if (e.keyCode === 32 && climbBool && player.alive) {
+    if (e.keyCode === 32 && climbBool && player.alive && playing) {
         climbBool = false;
         player.speedY = 0;
         clearInterval(climbing);
@@ -56,8 +59,6 @@ function keyUp(e){
     }
     if ((e.key === 'n' || e.key === 'N') && !playing){
         newGame();
-        playing = true;
-        start = setInterval("play()", 10);
     }
 }
 
@@ -67,7 +68,8 @@ function up(){
         player.y -= player.speedY;
         playerDiv.style.top = player.y + 'px';
     } else {
-        gameOver();
+        clearInterval(climbing);
+        gotHit();
     }
 }
 
@@ -77,33 +79,63 @@ function down(){
         player.y += player.speedY;
         playerDiv.style.top = player.y + 'px';
     } else {
-        gameOver();
+        clearInterval(falling);
+        gotHit();
     }
 }
 
 function newGame(){
-    playerIMG.src = "ASSETS/GAME/CHAR/flying.gif";
-    player.alive = true;
+    resetPlayer();
+    playing = true;
+    start = setInterval("play()", 10);
     document.getElementById('screen').style.visibility = "hidden";
 }
 
-function gameOver(){
+function gotHit(){
+    player.lives--;
+    hearts[player.lives].src = "ASSETS/GAME/HUD/livelost.png"
     playing = false;
+    climbBool = false;
     playerIMG.src = "ASSETS/GAME/CHAR/hit.gif";
     player.speedY = 0;
-    player.alive = false;
-    clearInterval(falling);
     clearInterval(start);
+    if (player.lives <= 0){
+        gameOver();
+    } else {
+        setTimeout(()=>{
+            player.y = window.innerHeight / 2;
+            playerIMG.src = "ASSETS/GAME/CHAR/flying.gif";
+            playing = true;
+            falling = setInterval("down()", 5);
+            start = setInterval("play()", 10);
+        }, 500)
+    }
+}
+
+function gameOver(){
+    clearInterval(start);
+    playing = false;
+    player.alive = false;
     document.getElementById('screen').style.visibility = "visible";
     document.getElementById('gameOver').style.visibility = "inherit";
 }
 
-
+function resetPlayer(){
+    playerIMG.src = "ASSETS/GAME/CHAR/flying.gif";
+    for(let i = 0; i<hearts.length;i++){
+        hearts[i].src = "ASSETS/GAME/HUD/live.png";
+    }
+    player.lives = 3;
+    player.alive = true;
+    player.y = window.innerHeight/2;
+    player.speedY = 0;
+    player.lives = 3;
+    player.alive = true;
+}
 
 let rotation = 0;
 let cog = document.getElementById('cog');
-let cogY = cog.offsetTop;
-console.log(cogY);
+
 function rotate(){
     rotation += 1;
     cog.style.transform = "rotate("+rotation+"deg)";

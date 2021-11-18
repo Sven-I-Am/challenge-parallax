@@ -50,6 +50,8 @@ This week after we all got done with the database exercises we were given the fr
     * added "start new game" screen :heavy_check_mark:
     * added "game over" screen :heavy_check_mark:
     * LUNCHTIME :fork_and_knife: :clock12:
+    * composed the asset for the lives, using the "frump-art-pack" assets from the [school of game design](https://schoolofgamedesign.com/) :heavy_check_mark:
+    * player has 3 lives before `gameOver` :heavy_check_mark:
 
 ## To Do
 
@@ -70,7 +72,7 @@ objectives they will be moved up into the timeline section and ticked off using 
 5. Stop all animation on game over and before new game :heavy_check_mark:
 6. Collectables
 7. Score
-8. Lives
+8. Lives :heavy_check_mark:
 9. Music?
 10. Sound effects?
 11. Multiple levels
