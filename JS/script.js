@@ -22,6 +22,7 @@ let obstacleLayer = document.getElementById('obstacles');
 let speedX = 1;
 
 let playerDiv = document.getElementById('player');
+
 let playerIMG = document.getElementById('playerIMG');
 
 let player = {
@@ -31,7 +32,7 @@ let player = {
     maxY: window.innerHeight - playerDiv.offsetHeight - floor.offsetHeight,
     speedY: 0,
     drag: 0.99,
-    gravity: 0.1,
+    gravity: 0.05,
     lives: 3,
     alive: true
 }
@@ -88,7 +89,16 @@ function newGame(){
     resetPlayer();
     playing = true;
     start = setInterval("play()", 10);
+    falling = setInterval("down()", 5);
     document.getElementById('screen').style.visibility = "hidden";
+}
+
+function gameOver(){
+    clearInterval(start);
+    playing = false;
+    player.alive = false;
+    document.getElementById('screen').style.visibility = "visible";
+    document.getElementById('gameOver').style.visibility = "inherit";
 }
 
 function gotHit(){
@@ -112,13 +122,6 @@ function gotHit(){
     }
 }
 
-function gameOver(){
-    clearInterval(start);
-    playing = false;
-    player.alive = false;
-    document.getElementById('screen').style.visibility = "visible";
-    document.getElementById('gameOver').style.visibility = "inherit";
-}
 
 function resetPlayer(){
     playerIMG.src = "ASSETS/GAME/CHAR/flying.gif";
@@ -127,7 +130,9 @@ function resetPlayer(){
     }
     player.lives = 3;
     player.alive = true;
+    player.maxY = window.innerHeight - playerDiv.offsetHeight - floor.offsetHeight;
     player.y = window.innerHeight/2;
+    playerDiv.style.top = player.y + "px";
     player.speedY = 0;
     player.lives = 3;
     player.alive = true;

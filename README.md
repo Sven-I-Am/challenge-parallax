@@ -1,5 +1,7 @@
 # The one where OOP and Databases meet!
 ### exercise in week 9 (14/11/2021 - 19/11/2021) of our BeCode training
+## Published page
+[click here to go to the page](https://sven-i-am.github.io/challenge-parallax/)
 ## Challenge
 This week after we all got done with the database exercises we were given the freedom to create something using a parallax effect.
 
@@ -52,6 +54,9 @@ This week after we all got done with the database exercises we were given the fr
     * LUNCHTIME :fork_and_knife: :clock12:
     * composed the asset for the lives, using the "frump-art-pack" assets from the [school of game design](https://schoolofgamedesign.com/) :heavy_check_mark:
     * player has 3 lives before `gameOver` :heavy_check_mark:
+    * fixed a bug where the player didn't reset position after game over
+    * fixed bug where key event was triggered before respawn of player
+    * added the link to the published page to this readme
 
 ## To Do
 
