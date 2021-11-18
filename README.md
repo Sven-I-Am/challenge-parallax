@@ -42,6 +42,14 @@ This week after we all got done with the database exercises we were given the fr
       * I managed to spawn obstacles when clicking, have to change that to a randomized interval perhaps?
       * currently working on despawning the obstacles once they move out of the screen
         * for now it despawns all obstacles when the first obstacle gets beyond the screen border
+* Day 2 (:date: 18/11/2021)
+  * The plan for today:
+    * fix character movement => movement now resembles flappy bird :heavy_check_mark:
+    * make obstacles that can `kill` 
+      * => the floor and ceiling are lava :heavy_check_mark:
+    * added "start new game" screen :heavy_check_mark:
+    * added "game over" screen :heavy_check_mark:
+    * LUNCHTIME :fork_and_knife: :clock12:
 
 ## To Do
 
@@ -53,9 +61,16 @@ objectives they will be moved up into the timeline section and ticked off using 
 
 ### Nice to have
 1. Movable character :heavy_check_mark:
+   1. Gravity :heavy_check_mark:
+   2. Drag :heavy_check_mark:
 2. Obstacles to avoid
-3. Collectables
-4. Lives
-5. Music?
-6. Sound effects?
-7. Multiple levels
+   1. floor and ceiling :heavy_check_mark:
+3. Start screen :heavy_check_mark:
+4. Game over screen :heavy_check_mark:
+5. Stop all animation on game over and before new game :heavy_check_mark:
+6. Collectables
+7. Score
+8. Lives
+9. Music?
+10. Sound effects?
+11. Multiple levels

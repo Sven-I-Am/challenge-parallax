@@ -34,22 +34,28 @@ html {
     height: 50%;
 }
 
-.clouds, #ground {
+.clouds, #floor, #ceiling {
     background-repeat: repeat-x;
     background-size: contain;
 }
 
-#ground {
-    background-image: url("../ASSETS/GAME/level-builder/platform_mid.png");
-    background-position: bottom left;
-    bottom: 0;
+#floor, #ceiling {
+    background-image: url("../ASSETS/GAME/level-builder/cog_12.png");
+
     height: 100px;
     z-index: 5;
 }
-#footLevel {
-    height: 50px;
+
+#floor {
+    background-position: bottom left;
+    bottom: 0;
 }
 
+#ceiling {
+    background-position: top left;
+    top: 0;
+    transform: rotate(180deg);
+}
 
 #cloud1{
     background-image: url("../ASSETS/GAME/clouds/Cloud_1.png");
@@ -77,23 +83,48 @@ html {
 }
 
 #player, .obstacle{
-    height: 100px;
     width: 100px;
-    background-size: contain;
+    height: fit-content;
     background-repeat: no-repeat;
 }
 
 #player {
-    background-image: url("../ASSETS/GAME/frump/frump-front.png");
-    top: 50%;
+    bottom: 100px;
     left: 250px;
     z-index: 10;
 }
 
+#playerIMG {
+    width: 100%;
+}
+
 #obstacles{
     position: absolute;
-    height: 100px;
+    height: 120px;
     z-index: 4;
     right: 0;
     bottom: 80px;
+}
+
+.obstacle {
+    bottom: 0;
+
+}
+
+#screen {
+    position: absolute;
+    background: #555555aa;
+    height: 100VH;
+    width: 100VW;
+    z-index: 100;
+}
+
+#gameOver{
+    color: darkred;
+    visibility: hidden;
+}
+
+#newGame{
+    color: greenyellow;
+    visibility: inherit;
 }

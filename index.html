@@ -25,15 +25,23 @@
     <div id="cloud1" class="layer bgLayer clouds"></div>
     <div id="cloud2" class="layer bgLayer clouds"></div>
     <div id="cloud3" class="layer bgLayer clouds"></div>
-    <div id="ground" class="layer bgLayer"></div>
-    <div id="footLevel" class="layer"></div>
+    <div id="ceiling" class="layer bgLayer"></div>
+    <div id="floor" class="layer bgLayer"></div>
     <div id="cog" class="layer"></div>
 </div>
 <div id="obstacles">
 
 </div>
 
-<div id="player" class="layer"></div>
+<div id="player" class="layer">
+    <img src="ASSETS/GAME/CHAR/flying.gif" id="playerIMG" alt="player">
+</div>
+
+<div id="screen" class="d-flex text-center align-items-center justify-content-center">
+        <h1><span id="gameOver">Game over</span><br>
+            <span id="newGame">press 'n' to start a new game</span></h1>
+
+</div>
 <script src="JS/script.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 </body>
