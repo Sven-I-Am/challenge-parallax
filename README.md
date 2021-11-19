@@ -57,6 +57,21 @@ This week after we all got done with the database exercises we were given the fr
     * fixed a bug where the player didn't reset position after game over
     * fixed bug where key event was triggered before respawn of player
     * added the link to the published page to this readme
+* Day 3 (:date: 19/11/2021)
+  * Working remote today
+  * First thing to do:
+    * declutter code somewhat :heavy_check_mark:
+  * Must-haves by the end of the day:
+    * obstacles :heavy_check_mark:
+      * still some bugs where collisions happen with 'ghost' obstacles
+    * score based on time and/or obstacles avoided
+  * Nice-to-haves:
+    * collectibles:
+      * coins/candy for extra score
+      * lives
+      * immunity
+    * music
+    * sound effects
 
 ## To Do
 
@@ -72,6 +87,7 @@ objectives they will be moved up into the timeline section and ticked off using 
    2. Drag :heavy_check_mark:
 2. Obstacles to avoid
    1. floor and ceiling :heavy_check_mark:
+   2. flying saw blades :heavy_check_mark:
 3. Start screen :heavy_check_mark:
 4. Game over screen :heavy_check_mark:
 5. Stop all animation on game over and before new game :heavy_check_mark:

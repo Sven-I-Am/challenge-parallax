@@ -109,15 +109,14 @@ html {
 
 #obstacles{
     position: absolute;
-    height: 120px;
+    height: 100VH;
     z-index: 4;
     right: 0;
     bottom: 80px;
 }
 
 .obstacle {
-    bottom: 0;
-
+    position: absolute;
 }
 
 #screen {
