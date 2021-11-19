@@ -99,3 +99,7 @@ objectives they will be moved up into the timeline section and ticked off using 
 9. Music?
 10. Sound effects?
 11. Multiple levels
+
+## Reported bugs
+* Min Jie reported a bug when N gets spammed that spawns in a lot of blades
+![spamN](ASSETS/README/BUGS/spamNBug.png)

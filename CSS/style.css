@@ -76,6 +76,7 @@ html {
     width: 100px;
     height: fit-content;
     background-repeat: no-repeat;
+    /*border: 2px solid deeppink;*/
 }
 
 #player {
