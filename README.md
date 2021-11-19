@@ -64,7 +64,7 @@ This week after we all got done with the database exercises we were given the fr
   * Must-haves by the end of the day:
     * obstacles :heavy_check_mark:
       * still some bugs where collisions happen with 'ghost' obstacles
-    * score based on time and/or obstacles avoided
+    * score based on time and/or obstacles avoided :heavy_check_mark:
   * Nice-to-haves:
     * collectibles:
       * coins/candy for extra score
@@ -72,6 +72,8 @@ This week after we all got done with the database exercises we were given the fr
       * immunity
     * music
     * sound effects
+      * managed to get a jumping sound effect in :heavy_check_mark:
+  * I didn't get everything done, but the must-haves are in!
 
 ## To Do
 
@@ -92,7 +94,7 @@ objectives they will be moved up into the timeline section and ticked off using 
 4. Game over screen :heavy_check_mark:
 5. Stop all animation on game over and before new game :heavy_check_mark:
 6. Collectables
-7. Score
+7. Score :heavy_check_mark:
 8. Lives :heavy_check_mark:
 9. Music?
 10. Sound effects?

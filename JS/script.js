@@ -11,7 +11,8 @@ let obstacleLayer = document.getElementById('obstacles');
 let obstacles = obstacleLayer.getElementsByClassName('obstacle');
 let playerDiv = document.getElementById('player');
 let playerIMG = document.getElementById('playerIMG');
-let cog = document.getElementById('cog');
+let showscore = document.getElementById('score');
+let jumpSound = document.getElementById('jumpSound');
 
 //Get X coordinate from elements
 
@@ -27,6 +28,7 @@ let cloud3X = cloud1.offsetLeft;
 let playing = false;
 let climbBool = false;
 let paused = false;
+let shown = true;
 
 //Declare the setInterval variables
 
@@ -46,9 +48,11 @@ let player = {
     drag: 0.99,
     gravity: 0.05,
     lives: 3,
-    alive: true
+    alive: true,
+    score: 0
 }
 playerDiv.style.top = player.y + "px";
+showscore.innerText = player.score;
 
 //Set animation variables
 
@@ -68,6 +72,7 @@ function keyDown(e) {
         player.speedY = 5;
         clearInterval(falling);
         climbing = setInterval("up()", 5);
+        playJumpSound();
     }
 }
 function keyUp(e){
@@ -84,11 +89,31 @@ function keyUp(e){
         if(!paused){
             clearIntervals();
             paused = true;
+            gamePaused();
+
         } else {
             setIntervals();
             paused = false;
+            gamePaused();
         }
     }
+    if (e.key === 'c' || e.key === 'C'){
+        if(!shown){
+            shown = true;
+            showControls();
+        } else {
+            shown = false;
+            showControls();
+        }
+    }
+}
+
+//sound effects
+
+function playJumpSound(){
+    jumpSound.play();
+    jumpSound.loop = false;
+    jumpSound.volume = 0.1;
 }
 
 //Player functions
@@ -99,7 +124,6 @@ function up(){
         player.y -= player.speedY;
         playerDiv.style.top = player.y + 'px';
     } else {
-
         gotHit();
     }
 }
@@ -110,7 +134,6 @@ function down(){
         player.y += player.speedY;
         playerDiv.style.top = player.y + 'px';
     } else {
-
         gotHit();
     }
 }
@@ -127,6 +150,7 @@ function resetPlayer(){
     playerDiv.style.top = player.y + "px";
     player.speedY = 0;
     player.lives = 3;
+    player.score = 0;
 }
 
 function gotHit(){
@@ -171,8 +195,6 @@ function spawnObstacle(){
 
 //Collision checks
 
-//setInterval("checkCollision()", 2000);
-
 function checkCollision(el){
     let rect = el.getBoundingClientRect();
     return {
@@ -183,20 +205,52 @@ function checkCollision(el){
     }
 }
 
+//Score counter
+
+setInterval(()=>{
+    if (playing && !paused){
+        player.score++;
+        showscore.innerText = player.score;
+    }
+}, 1000);
+
 //Game state functions
 
 function newGame(){
     resetPlayer();
+    showscore.innerText = player.score;
     playing = true;
     setIntervals();
     document.getElementById('screen').style.visibility = "hidden";
+    document.getElementById('gameOver').style.visibility = "hidden";
+    document.getElementById('newGame').style.visibility = "hidden";
+    document.getElementById('pause').style.visibility = "hidden";
 }
 
 function gameOver(){
     playing = false;
     player.alive = false;
     document.getElementById('screen').style.visibility = "visible";
-    document.getElementById('gameOver').style.visibility = "inherit";
+    document.getElementById('gameOver').style.visibility = "visible";
+    document.getElementById('newGame').style.visibility = "visible";
+}
+
+function gamePaused(){
+    if (paused){
+        document.getElementById('screen').style.visibility = "visible";
+        document.getElementById('pause').style.visibility = "visible";
+    } else {
+        document.getElementById('screen').style.visibility = "hidden";
+        document.getElementById('pause').style.visibility = "hidden";
+    }
+}
+
+function showControls(){
+    if (shown){
+        document.getElementById('controls').style.visibility = "visible";
+    } else {
+        document.getElementById('controls').style.visibility = "hidden";
+    }
 }
 
 //Animation functions
@@ -208,7 +262,6 @@ function animate(){
     cloud3X = moveElement(cloud3, cloud3X, speedX*-1.2);
     floorX = moveElement(floor, floorX, speedX*2);
     ceilingX = moveElement(ceiling, ceilingX, speedX*-2);
-    rotate(cog, speedX);
     moveObstacles();
 }
 
@@ -225,7 +278,10 @@ function moveElement(el, elX, speed){
 
 function moveObstacles(){
     obstacles = obstacleLayer.getElementsByClassName('obstacle');
-
+    let speed = speedX * 3;
+    if (player.score%30 === 0){
+        speed += 0.2;
+    }
     for (let i=0; i<obstacles.length;i++){
 
         let obstacleX = obstacles[i].offsetLeft;
@@ -234,7 +290,7 @@ function moveObstacles(){
         } else {
             let playerCoords = checkCollision(playerDiv);
             let obstacleCoords = checkCollision(obstacles[i]);
-            obstacleX -= speedX*3;
+            obstacleX -= speed;
             obstacles[i].style.left = obstacleX + "px";
             rotate(obstacles[i], speedX*-8);
             if(obstacleCoords.TL[0] <= playerCoords.TR[0]  && obstacleCoords.TR[0] >= playerCoords.TL[0] && obstacleCoords.TL[1] <= playerCoords.BL[1]  && obstacleCoords.BL[1] >= playerCoords.TL[1]){

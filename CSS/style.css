@@ -72,15 +72,6 @@ html {
     z-index: 4;
 }
 
-#cog {
-    background-image: url("../ASSETS/GAME/level-builder/cog_2.png");
-    bottom: -200px;
-    height: 400px;
-    width: 400px;
-    background-size: cover;
-    z-index: 4;
-}
-
 #player, .obstacle{
     width: 100px;
     height: fit-content;
@@ -95,7 +86,7 @@ html {
 #liveContainer{
     background-image: url("../ASSETS/GAME/HUD/livesHud.png");
     height: 100px;
-    width: 336px;
+    width: 186px;
     background-size: contain;
     background-repeat: no-repeat;
     overflow: visible;
@@ -103,6 +94,19 @@ html {
     left: 0;
     z-index: 15;
 }
+
+#scoreContainer{
+    background-image: url("../ASSETS/GAME/HUD/livesHud.png");
+    height: 100px;
+    width: 186px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    overflow: visible;
+    top: 0;
+    right: 0;
+    z-index: 15;
+}
+
 #playerIMG {
     width: 100%;
 }
@@ -137,6 +141,32 @@ html {
     visibility: inherit;
 }
 
+#pause{
+    visibility: hidden;
+}
+
+#controls{
+    visibility: visible;
+    position: absolute;
+    top: 100px;
+    right: 0;
+    height: 80%;
+    z-index: 50;
+    background: #555555aa;
+    font-size: 22px;
+    padding-right: 15px;
+    padding-top: 20px;
+    color: greenyellow;
+}
+
+#controls p{
+    margin-left: 15px;
+}
+
+#controls ul{
+    list-style: none;
+}
+
 #hud {
     width: 100%;
     height: 100vh;
@@ -145,6 +175,15 @@ html {
 
 #lives {
     height: 100px;
+}
+
+#score{
+    position: absolute;
+    top: 20px;
+    right: 50px;
+    color: #9bd3dc;
+    font-size: 40px;
+    z-index: 50;
 }
 
 
