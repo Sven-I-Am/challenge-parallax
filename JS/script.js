@@ -111,6 +111,7 @@ function keyUp(e){
 //sound effects
 
 function playJumpSound(){
+    jumpSound.currentTime = 0;
     jumpSound.play();
     jumpSound.loop = false;
     jumpSound.volume = 0.1;
